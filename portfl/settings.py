@@ -116,6 +116,17 @@ WSGI_APPLICATION = 'portfl.wsgi.application'
     }
 }"""
 
+
+if os.getenv("RENDER"):
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    if not User.objects.filter(username="orthomak").exists():
+        User.objects.create_superuser(
+            "orthomak",
+            os.getenv("EMAIL_HOST_USER"),
+            os.getenv("ADMIN_PASSWORD")
+        )
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL:
