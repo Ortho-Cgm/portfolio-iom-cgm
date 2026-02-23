@@ -1,1 +1,1 @@
-web: gunicorn portfl.wsgi:application
+gunicorn portfl.wsgi:application
