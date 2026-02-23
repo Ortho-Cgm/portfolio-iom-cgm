@@ -27,12 +27,16 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 #SECRET_KEY = 'django-insecure-lr83ck(l@lb*f+d02b!vz(by(_m=k3tqape)lgxqops6jtnl!('
 
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-dev-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "portfolio-iom-cgm.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
@@ -95,6 +99,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://portfolio-iom-cgm.onrender.com",
 ]
 
 WSGI_APPLICATION = 'portfl.wsgi.application'
