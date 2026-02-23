@@ -21,3 +21,4 @@ ua-parser-builtins==202602
 urllib3==2.6.3
 user-agents==2.2.0
 gunicorn
+whitenoise
