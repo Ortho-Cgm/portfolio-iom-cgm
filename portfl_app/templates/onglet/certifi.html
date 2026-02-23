@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Certifications | IOM-CGM{% endblock %}
+{% block content %}
+
+<div class="services-page">
+
+    <!-- ===================== -->
+    <!-- HERO -->
+    <!-- ===================== -->
+    <header class="reveal">
+        <h1 class="section-title">
+            🎓 Mes Certifications
+        </h1>
+        <p class="section-subtitle">
+            Certifications attestant de compétences techniques, méthodologiques
+            et professionnelles acquises à travers des formations reconnues.
+        </p>
+        <hr>
+    </header>
+
+    <!-- ===================== -->
+    <!-- CERTIFICATIONS OBTENUES -->
+    <!-- ===================== -->
+    <section class="reveal">
+        <h2 class="section-title">✅ Certifications obtenues</h2>
+        <p class="section-subtitle">Formations validées et certifiées</p>
+
+        <div class="services-grid">
+
+            {% for cert in certifications_obtenues %}
+            <div class="service-card">
+
+                <span class="service-badge popular">obtenue</span>
+
+                {% if cert.logo %}
+                <img src="{{ cert.logo.url }}" alt="{{ cert.title }}" class="project-image">
+                {% endif %}
+
+                <h3>{{ cert.title }}</h3>
+                <p><strong>{{ cert.provider }}</strong></p>
+
+                <p>{{ cert.description|truncatechars:40 }}</p>
+
+                {% if cert.technologies %}
+                <ul class="service-list">
+                    <li>{{ cert.technologies }}</li>
+                </ul>
+                {% endif %}
+
+                <div class="service-actions">
+                    {% if cert.credential_url %}
+                    <a href="{{ cert.credential_url }}" target="_blank" class="btn btn-outline-primary">
+                        🔗 Vérifier
+                    </a>
+                    {% endif %}
+
+                    <button class="btn btn-primary cert-detail-btn" data-bs-toggle="modal" data-bs-target="#certModal"
+                        data-title="{{ cert.title }}" data-provider="{{ cert.provider }}"
+                        data-desc="{{ cert.description }}" data-tech="{{ cert.technologies }}"
+                        data-date="{{ cert.issued_date }}">
+                        📄 Détails
+                    </button>
+                </div>
+
+            </div>
+            {% empty %}
+            <p class="text-center">Aucune certification obtenue pour le moment.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- CERTIFICATIONS EN COURS -->
+    <!-- ===================== -->
+    <section class="reveal mt-5">
+        <h2 class="section-title">⏳ Certifications en cours</h2>
+        <p class="section-subtitle">Formations actuellement suivies</p>
+
+        <div class="services-grid">
+
+            {% for cert in certifications_encours %}
+            <div class="service-card">
+
+                <span class="service-badge recommended">en cours</span>
+
+                {% if cert.logo %}
+                <img src="{{ cert.logo.url }}" alt="{{ cert.title }}" class="project-image">
+                {% endif %}
+
+                <h3>{{ cert.title }}</h3>
+                <p><strong>{{ cert.provider }}</strong></p>
+
+                <p>{{ cert.description|truncatechars:40 }}</p>
+
+            </div>
+            {% empty %}
+            <p class="text-center">Aucune certification en cours.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- CERTIFICATIONS FUTURES -->
+    <!-- ===================== -->
+    <section class="reveal mt-5">
+        <h2 class="section-title">🎯 Certifications prévues</h2>
+        <p class="section-subtitle">Objectifs de montée en compétences</p>
+
+        <div class="services-grid">
+
+            {% for cert in certifications_futures %}
+            <div class="service-card">
+
+                <span class="service-badge">à venir</span>
+
+                {% if cert.logo %}
+                <img src="{{ cert.logo.url }}" alt="{{ cert.title }}" class="project-image">
+                {% endif %}
+
+                <h3>{{ cert.title }}</h3>
+                <p><strong>{{ cert.provider }}</strong></p>
+
+                <p>{{ cert.description|truncatechars:40 }}</p>
+
+            </div>
+            {% empty %}
+            <p class="text-center">Aucune certification prévue pour le moment.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+</div>
+
+<!-- ===================== -->
+<!-- MODAL DETAIL -->
+<!-- ===================== -->
+<div class="modal fade" id="certModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h5 class="modal-title" id="certModalTitle"></h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p id="certModalProvider"></p>
+                <p id="certModalDesc"></p>
+
+                <h6>Technologies / Compétences</h6>
+                <ul id="certModalTech"></ul>
+
+                <p class="text-muted mt-3" id="certModalDate"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'includ/serv.css' %}">
+<script src="{% static 'includ/cert.js' %}"></script>
+
+{% endblock %}

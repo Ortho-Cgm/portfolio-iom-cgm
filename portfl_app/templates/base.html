@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <script>
+        (function () {
+            const DEBUG_SPLASH = false; // ← mets true pour forcer le splash
+
+            if (!DEBUG_SPLASH && sessionStorage.getItem("splashShown") === "true") {
+                document.documentElement.classList.add("no-splash");
+            }
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}IOM-CGM{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fontawesone/css/all.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'includ/nav.css' %}">
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+
+    <script src="{% static 'js/scrollreveal.min.js' %}"></script>
+
+</head>
+
+<body>
+
+    <!-- SPLASH SCREEN -->
+    {% if request.path == "/" %}
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="logo-wrapper">
+                <img src="{% static 'images/cgm.jpg' %}" alt="Logo" class="splash-logo">
+            </div>
+
+            <!-- Loader Facebook-like -->
+            <div class="dots-loader">
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+            <p class="splash-text">Chargement…</p>
+        </div>
+    </div>
+    {% endif %}
+
+    {% include 'navig/navbar.html' %}
+    <div class="page-wrapper">
+        <main class="flex-grow-1 pt-4">
+            {% block content %}
+
+            {% endblock content %}
+        </main>
+        {% include 'navig/footer.html' %}
+    </div>
+
+
+
+    <script>
+        window.addEventListener("load", function () {
+            const splash = document.getElementById("splash-screen");
+            if (!splash) return;
+
+            setTimeout(() => {
+                splash.classList.add("hidden");
+                sessionStorage.setItem("splashShown", "true");
+            }, 1400);
+        });
+    </script>
+
+</body>
+
+</html>

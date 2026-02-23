@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Projets | IOM-CGM{% endblock %}
+{% block content %}
+
+<div class="services-page">
+
+    <!-- ===================== -->
+    <!-- HERO / INTRO -->
+    <!-- ===================== -->
+    <header class="reveal">
+        <h1 class="section-title">
+            <i class="fas fa-diagram-project"></i> Mes Projets
+        </h1>
+        <p class="section-subtitle">
+            Une sélection de projets pensés pour la performance,
+            la fiabilité et une expérience utilisateur moderne. Découvrez les projets que j’ai réalisés, ceux en cours
+            de développement
+            et les idées que je prépare pour l’avenir. Chaque projet reflète une
+            approche orientée qualité, performance et impact réel.
+        </p>
+        <hr>
+    </header>
+
+    <!-- ===================== -->
+    <!-- PROJETS RÉALISÉS -->
+    <!-- ===================== -->
+    <section class="reveal">
+        <h2 class="section-title">🚀 Projets réalisés</h2>
+        <p class="section-subtitle">Projets finalisés et livrés avec succès</p>
+
+        <div class="services-grid">
+
+            {% for project in projects_realises %}
+            <div class="service-card">
+
+                <span class="service-badge popular">réalisé</span>
+
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                {% endif %}
+
+                <h3>{{ project.title }}</h3>
+
+                <p>
+                    {{ project.description|truncatechars:140 }}
+                </p>
+
+                {% if project.technologies %}
+                <ul class="service-list">
+                    <li>{{ project.technologies }}</li>
+                </ul>
+                {% endif %}
+
+                <div class="service-actions">
+                    <button class="btn btn-primary project-detail-btn" data-bs-toggle="modal"
+                        data-bs-target="#projectModal" data-title="{{ project.title }}"
+                        data-desc="{{ project.description }}" data-tech="{{ project.technologies }}"
+                        data-image="{% if project.image %}{{ project.image.url }}{% endif %}">
+                        <i class="fas fa-eye"></i> Détails
+                    </button>
+
+                    <button class="btn btn-outline-danger btn-like" data-id="{{ project.id }}">
+                        ❤️ <span class="like-count">{{ project.likes }}</span>
+                    </button>
+                </div>
+
+            </div>
+
+            {% empty %}
+            <p class="text-center">Aucun projet réalisé pour le moment.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- PROJETS EN COURS -->
+    <!-- ===================== -->
+    <section class="reveal my-4 mt-4 pt-5">
+        <h2 class="section-title">⏳ Projets en cours</h2>
+        <p class="section-subtitle">Projets sur lequel reflète la réalisation</p>
+
+        <div class="services-grid">
+
+            {% for project in projects_encours %}
+            <div class="service-card">
+
+                <span class="service-badge recommended">en cours</span>
+
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                {% endif %}
+
+                <h3>{{ project.title }}</h3>
+
+                <p>
+                    {{ project.description|truncatechars:140 }}
+                </p>
+
+                {% if project.technologies %}
+                <ul class="service-list">
+                    <li>{{ project.technologies }}</li>
+                </ul>
+                {% endif %}
+
+                <div class="service-actions">
+                    <button class="btn btn-primary project-detail-btn" data-bs-toggle="modal"
+                        data-bs-target="#projectModal" data-title="{{ project.title }}"
+                        data-desc="{{ project.description }}" data-tech="{{ project.technologies }}"
+                        data-image="{% if project.image %}{{ project.image.url }}{% endif %}">
+                        <i class="fas fa-eye"></i> Détails
+                    </button>
+
+                    <button class="btn btn-outline-danger btn-like" data-id="{{ project.id }}">
+                        ❤️ <span class="like-count">{{ project.likes }}</span>
+                    </button>
+                </div>
+
+            </div>
+
+            {% empty %}
+            <p class="text-center">Aucun projet réalisé pour le moment.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- PROJETS FUTURS -->
+    <!-- ===================== -->
+    <section class="reveal my-4 mt-4 pt-5">
+        <h2 class="section-title">🌱 Projets à venir</h2>
+        <p class="section-subtitle">Projets à la vision de nouveau concept</p>
+
+        <div class="services-grid">
+
+            {% for project in projects_futurs %}
+            <div class="service-card">
+
+                <span class="service-badge recommended">à venir</span>
+
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                {% endif %}
+
+                <h3>{{ project.title }}</h3>
+
+                <p>
+                    {{ project.description|truncatechars:140 }}
+                </p>
+
+                {% if project.technologies %}
+                <ul class="service-list">
+                    <li>{{ project.technologies }}</li>
+                </ul>
+                {% endif %}
+
+                <div class="service-actions">
+                    <button class="btn btn-primary project-detail-btn" data-bs-toggle="modal"
+                        data-bs-target="#projectModal" data-title="{{ project.title }}"
+                        data-desc="{{ project.description }}" data-tech="{{ project.technologies }}"
+                        data-image="{% if project.image %}{{ project.image.url }}{% endif %}">
+                        <i class="fas fa-eye"></i> Détails
+                    </button>
+
+                    <button class="btn btn-outline-danger btn-like" data-id="{{ project.id }}">
+                        ❤️ <span class="like-count">{{ project.likes }}</span>
+                    </button>
+                </div>
+
+            </div>
+            {% empty %}
+            <p class="text-center">Aucun projet réalisé pour le moment.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- POURQUOI MOI -->
+    <!-- ===================== -->
+    <section class="reveal my-4 mt-4 pt-4">
+        <h2 class="section-title">Pourquoi travailler avec moi ?</h2>
+        <p class="section-subtitle">Une approche orientée résultats</p>
+        <hr>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Solutions sur mesure</h3>
+                <p>Chaque projet est conçu selon vos objectifs et besoins réels.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Performance & qualité</h3>
+                <p>Code propre, maintenable et performant.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Suivi & accompagnement</h3>
+                <p>Un vrai suivi après la livraison. Un partenaire, pas juste un prestataire</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- ===================== -->
+    <!-- NEWSLETTER / CTA -->
+    <!-- ===================== -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <section class="newsletter-box p-5 my-4 text-center service-card" mb-5 reveal">
+        <h2 class="mb-3">📩 Newsletter</h2>
+        <p class="mb-4">
+            Abonnez-vous à la newsletter pour suivre l’évolution des projets,
+            découvrir les nouveautés et recevoir des conseils exclusifs.
+        </p>
+
+        <form method="POST" action="{% url 'newsletter_subscribe' %}" class="row justify-content-center">
+            {% csrf_token %}
+            <div class="col-md-4 mb-2">
+                <input type="email" name="email" class="form-control" placeholder="Votre email" required>
+            </div>
+            <div class="col-md-2 mb-2">
+                <button class="btn btn-light w-100">S’abonner</button>
+            </div>
+        </form>
+
+        <p class="mt-4">
+            👥 <strong>{{ subscribers_count }}</strong> abonnées nous font déjà confiance !
+        </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- RACCOURCIS / NAVIGATION -->
+    <!-- ===================== -->
+    <section class="text-center">
+        <h2 class="mb-4">Aller plus loin</h2>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{% url 'service' %}" class="btn btn-outline-secondary">Mes services</a>
+            <a href="{% url 'propos' %}" class="btn btn-outline-secondary">À propos</a>
+        </div>
+    </section>
+
+</div>
+
+
+<div class="modal fade" id="projectModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalTitle"></h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img id="projectModalImage" class="project-image d-none mb-3">
+                <p id="projectModalDesc"></p>
+
+                <h6>Technologies utilisées</h6>
+                <ul id="projectModalTech"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="{% static 'includ/serv.css' %}">
+{% block scripts %}
+<script src="{% static 'includ/proj.js' %}"></script>
+{% endblock %}
+
+{% endblock %}

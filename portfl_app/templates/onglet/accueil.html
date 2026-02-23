@@ -1,0 +1,492 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Accueil | IOM-CGM{% endblock %}
+{% block content %}
+
+<!-- TITRE D’ACCUEIL -->
+<h1 class="container welcome-title pt-5 mt-4">
+    BIENVENUE À IOM-CGM
+    <p>On vous salue avec respect...👋</p>
+</h1>
+
+<!-- HERO SIMPLE AVEC CAROUSEL -->
+<div class="container my-4">
+    <div class="card glass-card">
+        <div class="row g-0 align-items-stretch">
+
+            <!-- DROITE : TEXTE -->
+            <div class="col-lg-5 col-md-12">
+                <div class="card-body hero-right">
+                    <h1 class="animated-text">
+                        Moi c’est <span class="highlight fw-bold">ORTHO MAK</span>
+                    </h1>
+
+                    <h2 class="fw-light text-center">Ingénieur en développement Web & Mobile</h2>
+
+                    <p class="mt-3">
+                        Je transforme des idées en solutions numériques performantes,
+                        modernes et orientées impact. La technologie est un langage universel capable de résoudre
+                        des problèmes et de transformer le monde.
+                    </p>
+
+                    <p>
+                        Mon ambition est de concevoir des solutions utiles,
+                        accessibles et responsables, au service de l’humain.
+                    </p>
+
+                    <p class="text-center">
+                        En constante évolution 🚀
+                    </p>
+                </div>
+            </div>
+
+            <!-- GAUCHE : IMAGE / CARROUSEL -->
+            <div class="col-lg-7 col-md-12 d-flex align-items-center justify-content-center p-3">
+                <div class="image-carousel w-100">
+                    <img src="{% static 'images/me1.jpg' %}" class="active" alt="photo 1">
+                    <img src="{% static 'images/me2.jpg' %}" alt="photo 2">
+                    <img src="{% static 'images/me3.jpg' %}" alt="photo 3">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="container my-1">
+
+    <div class="accordion glass-card card custom-accordion" id="accordionConcept">
+        <h2 class="text-center fw-bold mb-4">Pourquoi je fais ce que je fais</h2>
+
+        <!-- ITEM 1 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                🌍 La technologie comme langage universel
+            </button>
+            <div class="accordion-content">
+                <p>
+                    La technologie dépasse le simple code. Elle permet de résoudre
+                    des problèmes réels, connecter les peuples et transformer le monde. Elle est aujourd'hui
+                    incontournable dans tous ce qu'on fait...
+                </p>
+            </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                💡 Créer avec du sens
+            </button>
+            <div class="accordion-content">
+                <p>
+                    Chaque projet que je développe répond à un besoin réel
+                    et vise un impact positif sur la société, transforme des rêves à la réalité et amène
+                    dans un système moderne...
+                </p>
+            </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                🚀 Innovation continue
+            </button>
+            <div class="accordion-content">
+                <p>
+                    Le monde évolue vite. J’apprends constamment afin de rester
+                    à la pointe des technologies modernes. La motivation d'être à mesure d'améliorer les compétences
+                    envue d'être actif à la nouveauté technologique...
+                </p>
+            </div>
+        </div>
+
+        <!-- ITEM 4 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                🤝 Accessibilité & inclusion
+            </button>
+            <div class="accordion-content">
+                <p>
+                    La technologie doit être accessible à tous, peu importe
+                    le contexte ou les moyens, procurez un système informatique vous met à l'échelle concurentielle
+                    pour vos activités....
+                </p>
+            </div>
+        </div>
+
+        <!-- ITEM 5 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                🧠 Résolution de problèmes
+            </button>
+            <div class="accordion-content">
+                <p>
+                    J’aborde chaque défi comme un problème à analyser,
+                    structurer et résoudre efficacement. J'apprends du temps en temps pour savoir résoudre et donner
+                    la solution à ceux qui le desirent...
+                </p>
+            </div>
+        </div>
+
+        <!-- ITEM 6 -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                🌱 Impact durable
+            </button>
+            <div class="accordion-content">
+                <p>
+                    Construire des solutions durables qui continuent
+                    d’apporter de la valeur dans le temps. Préparer une pérenité dans tous les cas avec l'impact
+                    que porte la technologie...
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="container my-5">
+
+    <div class="section-header">
+        <svg class="section-icon" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5z" />
+        </svg>
+        <h2 class="section-title">Domaines d’expertise</h2>
+    </div>
+
+    <div class="cards-container reveal">
+        <div class="expertise-card glass-card">
+            <svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 4h18v12H3z" />
+                <path d="M8 20h8" />
+            </svg>
+            <h3 class="expertise-title">
+                Développement Web
+            </h3>
+
+            <p>
+                Création d’applications web modernes, sécurisées
+                et évolutives, capables de toucher des utilisateurs
+                partout dans le monde.
+            </p>
+        </div>
+
+        <div class="expertise-card glass-card">
+            <svg class="expertise-icon" viewBox="0 0 24 24">
+                <rect x="7" y="2" width="10" height="20" rx="2" />
+                <circle cx="12" cy="18" r="1" />
+            </svg>
+            <h3 class="expertise-title">
+                Développement Mobile
+            </h3>
+
+            <p>
+                Applications mobiles intuitives qui rapprochent
+                la technologie du quotidien des utilisateurs.
+            </p>
+        </div>
+
+        <div class="expertise-card glass-card">
+            <svg class="expertise-icon" viewBox="0 0 24 24">
+                <path d="M12 2l4 8-4 12-4-12 4-8z" />
+            </svg>
+            <h3 class="expertise-title">
+                Innovation & Technologie
+            </h3>
+
+            <p>
+                Explorer comment le numérique transforme
+                l’économie, l’éducation et la société.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section class="container my-5">
+    <h2 class="section-title with-icon">
+        <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2l4 8-4 12-4-12 4-8z" />
+        </svg>
+        Technologie clés
+    </h2>
+
+
+    <div class="tech-cards reveal">
+
+        <!-- TECHNOLOGIE -->
+        <div class="tech-card glass-card">
+            <div class="tech-image">
+                <img src="{% static 'images/img1.webp' %}" alt="Technologie informatique">
+            </div>
+            <div class="tech-content">
+                <h3>Technologie Informatique</h3>
+                <p>
+                    Comprendre, concevoir et exploiter les systèmes informatiques
+                    pour répondre aux enjeux modernes du numérique.
+                </p>
+            </div>
+        </div>
+
+        <!-- PROGRAMMATION -->
+        <div class="tech-card glass-card">
+            <div class="tech-image">
+                <img src="{% static 'images/img2.webp' %}" alt="Programmation">
+            </div>
+            <div class="tech-content">
+                <h3>Programmation</h3>
+                <p>
+                    Écriture de code propre, structuré et performant,
+                    orienté résolution de problèmes et évolutivité basé sur le Web et Mobile.
+                </p>
+            </div>
+        </div>
+
+        <!-- ANALYSE -->
+        <div class="tech-card glass-card">
+            <div class="tech-image">
+                <img src="{% static 'images/img3.jpg' %}" alt="Analyse informatique">
+            </div>
+            <div class="tech-content">
+                <h3>Analyse & Conception</h3>
+                <p>
+                    Analyse des besoins, modélisation des solutions
+                    et conception de systèmes robustes et durables.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="container my-5">
+    <h2 class="section-title with-icon">
+        <i class="fa-solid fa-compass section-fa-icon" style="color: #006eff;"></i>
+        Ce qui me définit
+    </h2>
+
+    <div class="classic-carousel">
+
+        <button class="carousel-btn prev">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="carousel-track">
+
+            <div class="carousel-item active glass-card">
+                <i class="fa-solid fa-lightbulb definition-icon"></i>
+                <h3>Vision</h3>
+                <p>
+                    Utiliser la technologie pour résoudre des problèmes
+                    réels et créer des solutions utiles.
+                </p>
+            </div>
+
+            <div class="carousel-item glass-card">
+                <i class="fa-solid fa-code definition-icon"></i>
+                <h3>Ingénierie</h3>
+                <p>
+                    Concevoir des applications robustes, performantes
+                    et maintenables.
+                </p>
+            </div>
+
+            <div class="carousel-item glass-card">
+                <i class="fa-solid fa-rocket definition-icon"></i>
+                <h3>Évolution</h3>
+                <p>
+                    Apprentissage continu et adaptation permanente
+                    aux nouvelles technologies.
+                </p>
+            </div>
+
+            <div class="carousel-item glass-card">
+                <i class="fa-solid fa-users definition-icon"></i>
+                <h3>Impact</h3>
+                <p>
+                    Créer des produits centrés utilisateur avec
+                    une vraie valeur ajoutée.
+                </p>
+            </div>
+
+            <div class="carousel-item glass-card">
+                <i class="fa-solid fa-brain definition-icon"></i>
+                <h3>Analyse</h3>
+                <p>
+                    Comprendre, structurer et transformer des besoins
+                    en solutions techniques.
+                </p>
+            </div>
+
+        </div>
+
+        <button class="carousel-btn next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+    </div>
+
+    <div class="carousel-dots"></div>
+</section>
+
+
+
+<section class="container explore-section card my-4 glass-card">
+
+    <h2 class="section-title with-icon">
+        <i class="fa-solid fa-globe explore-icon"></i>
+        Explorer mon univers
+    </h2>
+
+    <p class="explore-description">
+        Chaque projet est une expérimentation,
+        chaque ligne de code une opportunité d’apprendre
+        et de créer de la valeur concrète.
+    </p>
+
+    <!-- BOUTONS CTA -->
+    <div class="explore-actions">
+        <a href="{% url 'project' %}" class="explore-btn">
+            <i class="fa-solid fa-diagram-project"></i>
+            Projets
+        </a>
+
+        <a href="{% url 'service' %}" class="explore-btn">
+            <i class="fa-solid fa-briefcase"></i>
+            Services
+        </a>
+
+        <a href="{% url 'certification' %}" class="explore-btn">
+            <i class="fa-solid fa-certificate"></i>
+            Certifications
+        </a>
+    </div>
+
+    <!-- VIDEOS / TRAVAUX -->
+    <div class="explore-media">
+
+        <div class="media-card">
+            <video src="{% static 'videos/vide_1.mp4' %}" controls loop preload="metadata"></video>
+
+            <div class="media-overlay">
+                <span class="media-title">Application Web & Mobile</span>
+            </div>
+        </div>
+
+        <div class="media-card">
+            <video src="{% static 'videos/vide_2.mp4' %}" controls loop preload="metadata"></video>
+
+            <div class="media-overlay">
+                <span class="media-title">Dashboard Data</span>
+            </div>
+        </div>
+
+        <div class="media-card">
+            <video src="{% static 'videos/vide_3.mp4' %}" controls loop preload="metadata"></video>
+
+            <div class="media-overlay">
+                <span class="media-title">Infographie PowerPoint</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container my-5 vision-section card glass-card">
+    <h2 class="section-title with-icon">
+        <i class="fa-solid fa-comments vision-icon"></i>
+        A la une
+    </h2>
+
+    <div class="vision-grid">
+
+        <div class="vision-card">
+            <i class="fa-solid fa-microchip"></i>
+            <p>
+                La technologie n’est pas un luxe,
+                c’est un levier pour bâtir l’avenir.
+            </p>
+        </div>
+
+        <div class="vision-card">
+            <i class="fa-solid fa-code"></i>
+            <p>
+                Chaque ligne de code est une décision
+                qui façonne l’expérience utilisateur.
+            </p>
+        </div>
+
+        <div class="vision-card highlight-vision">
+            <i class="fa-solid fa-rocket"></i>
+            <p>
+                Je transforme des idées ambitieuses
+                en solutions numériques concrètes.
+            </p>
+        </div>
+
+        <div class="vision-card">
+            <i class="fa-solid fa-brain"></i>
+            <p>
+                Penser avant de coder,
+                analyser avant de construire.
+            </p>
+        </div>
+
+        <div class="vision-card">
+            <i class="fa-solid fa-users"></i>
+            <p>
+                La technologie n’a de valeur
+                que lorsqu’elle sert l’humain.
+            </p>
+        </div>
+
+        <div class="vision-card highlight-vision">
+            <i class="fa-solid fa-lightbulb"></i>
+            <p>
+                Innover, apprendre et évoluer
+                pour créer un impact durable.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section class="container my-5 cta card glass-card">
+    <div class="cta-content">
+
+        <h2 class="cta-title">
+            Prêt à transformer vos idées en solutions numériques ?
+        </h2>
+
+        <p class="cta-text">
+            Que ce soit pour un projet web, mobile, une analyse technique
+            ou une collaboration long terme, je vous accompagne
+            de la conception à la mise en production.
+        </p>
+
+        <div class="cta-actions">
+            <a href="{% url 'propos' %}#contact" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i>
+                Me contacter
+            </a>
+
+
+
+            <a href="{% url 'project' %}" class="btn btn-outline">
+                <i class="fa-solid fa-folder-open"></i>
+                Voir mes projets
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<link rel="stylesheet" href="{% static 'includ/acc.css' %}">
+<script defer src="{% static 'includ/acc.js' %}"></script>
+
+{% endblock %}

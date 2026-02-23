@@ -1,0 +1,217 @@
+.about {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.about h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    font-weight: bold;
+}
+
+.about-section {
+    margin-bottom: 25px;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    padding: 1.5rem;
+    transition: transform 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.45);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-title i {
+    color: #2c82f3;
+    margin-right: 10px;
+}
+
+hr {
+    width: 120px;
+    margin: 20px auto 50px;
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #2c82f3, transparent);
+}
+
+.identity-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-pic {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.role {
+    opacity: 0.9;
+}
+
+.intro {
+    margin: 20px 0;
+    line-height: 1.8;
+}
+
+.identity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.identity-grid div {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.timeline li {
+    list-style: none;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #00c6ff;
+}
+
+.timeline span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.experience-list li {
+    margin-bottom: 15px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #4a82fa;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+}
+
+.contact-item i {
+    font-size: 1.4rem;
+}
+
+/* SCROLL REVEAL (GLOBAL SITE) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    transform: translateX(-60px);
+}
+
+.reveal-right {
+    transform: translateX(60px);
+}
+
+.reveal-left.active,
+.reveal-right.active {
+    transform: translateX(0);
+}
+
+
+
+/* breadcrumb flex propre */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+/* pousse le CV à droite */
+.breadcrumb-cv {
+    margin-left: auto;
+    list-style: none;
+}
+
+/* bouton CV */
+.breadcrumb-cv a {
+    padding: 6px 5px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s ease;
+}
+
+.breadcrumb-cv a:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: #ffffff;
+    color: #2c82f3;
+}
+
+/* breadcrumb items */
+.breadcrumb-item a {
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #2c82f3;
+    opacity: 0.6;
+}

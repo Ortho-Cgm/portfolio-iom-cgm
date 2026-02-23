@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FAQ | IOM-CGM{% endblock %}
+{% block content %}
+
+<div class="container services-page">
+
+    <!-- HERO -->
+    <header class="reveal">
+        <h1 class="section-title">❓ Foire Aux Questions</h1>
+        <p class="section-subtitle">
+            Réponses aux questions les plus fréquentes concernant
+            IOM-CGM, et la manière de connaitre à bien naviguer...
+        </p>
+        <hr>
+    </header>
+
+    <!-- FAQ ACCORDION -->
+    <section class="reveal">
+        <div class="accordion faq-accordion" id="faqAccordion">
+
+            {% for faq in faqs %}
+            <div class="accordion-item faq-item">
+                <h2 class="accordion-header" id="heading{{ faq.id }}">
+                    <button class="accordion-button collapsed faq-question" id="inp-form" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapse{{ faq.id }}">
+                        <span class="faq-icon">❓</span>
+                        {{ faq.question }}
+                    </button>
+                </h2>
+
+                <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-answer">
+                        {{ faq.answer|linebreaks }}
+                    </div>
+                </div>
+            </div>
+
+            {% empty %}
+            <p class="text-center">Aucune question disponible.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+
+</div>
+
+
+<link rel="stylesheet" href="{% static 'includ/serv.css' %}">
+<script src="{% static 'includ/serv.js' %}"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in faqs %}
+    {
+      "@type": "Question",
+      "name": "{{ faq.question|escapejs }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq.answer|striptags|escapejs }}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+{% endblock %}

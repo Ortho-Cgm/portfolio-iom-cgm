@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Commande_Service | Services | IOM-CGM{% endblock %}
+{% block content %}
+
+<section class="container request-page">
+
+    <!-- HEADER -->
+    <div class="request-header glass-card reveal">
+        <h2 class="request-title">
+            <i class="fa-solid fa-paper-plane"></i>
+            Commander un service
+        </h2>
+
+        <p class="request-subtitle">
+            Décrivez votre besoin afin d’obtenir une réponse et un devis personnalisés.
+        </p>
+
+        <div class="request-shortcuts">
+            <a href="https://wa.me/243811966208" target="_blank" class="shortcut">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+
+            <a href="{% url 'service' %}" class="shortcut">
+                <i class="fa-solid fa-arrow-left"></i> Services
+            </a>
+        </div>
+    </div>
+
+
+    <!-- FORMULAIRE -->
+    <div class="glass-card request-form reveal">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="service_type" value="{{ service_type }}">
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-user"></i>
+                    Nom complet
+                </label>
+                <input type="text" name="name" id="inp-form" class="form-control" placeholder="Ex : Ortho Mak" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-envelope"></i>
+                    Adresse email
+                </label>
+                <input type="email" name="email" id="inp-form" class="form-control" placeholder="exemple@email.com"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-layer-group"></i>
+                    Service sélectionné
+                </label>
+                <input type="text" id="inp-form" class="form-control" id="serv-selct"
+                    value="{{ service_type|capfirst }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Description du besoin
+                </label>
+                <textarea name="description" id="inp-form" class="form-control" rows="5"
+                    placeholder="Expliquez clairement votre projet, objectifs, délais…" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg submit-btn">
+                <i class="fa-solid fa-check"></i>
+                Envoyer la demande
+            </button>
+        </form>
+    </div>
+
+    <!-- CONSEILS -->
+    <div class="glass-card request-tips reveal mt-0 mb-0">
+        <h4>
+            <i class="fa-solid fa-lightbulb"></i>
+            Conseils pour une demande efficace
+        </h4>
+
+        <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Décrivez clairement votre objectif</li>
+            <li><i class="fa-solid fa-circle-check"></i> Indiquez vos délais si possibles</li>
+            <li><i class="fa-solid fa-circle-check"></i> Mentionnez votre budget estimatif</li>
+            <li><i class="fa-solid fa-circle-check"></i> Plus d’informations = devis plus rapide</li>
+        </ul>
+    </div>
+
+</section>
+
+
+{% if success %}
+<div class="success-modal-overlay">
+    <div class="success-modal glass-card reveal">
+        <h2>
+            <i class="fa-solid fa-circle-check"></i>
+            Demande envoyée !
+        </h2>
+
+        <p>
+            Merci pour votre demande.
+            Je vous répondrai très rapidement avec un devis personnalisé.
+        </p>
+
+        <div class="success-actions">
+            <a href="https://wa.me/243811966208" class="btn btn-success">
+                <i class="fa-brands fa-whatsapp"></i>
+                Continuer sur WhatsApp
+            </a>
+
+            <button class="btn btn-outline-light close-modal">
+                Fermer
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<link rel="stylesheet" href="{% static 'includ/deman.css' %}">
+<script defer src="{% static 'includ/deman.js' %}"></script>
+
+{% endblock %}

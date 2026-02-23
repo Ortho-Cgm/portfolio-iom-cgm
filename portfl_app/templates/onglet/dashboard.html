@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard | IOM-CGM{% endblock %}
+{% block content %}
+
+<div class="dashboard-page container my-4">
+
+    <!-- HERO -->
+    <header class="dashboard-hero reveal">
+        <h1 class="section-title">📊 Dashboard Utilisateur</h1>
+        <p class="section-subtitle">
+            Analyse des performances, engagement des visiteurs
+            et évolution continue du site.
+        </p>
+        <hr>
+    </header>
+
+    <!-- KPI -->
+    <section class="dashboard-kpis reveal">
+        <div class="kpi-card"><span>👀</span>
+            <h3>{{ visits_count }}</h3>
+            <p>Visites</p>
+        </div>
+        <div class="kpi-card"><span>📁</span>
+            <h3>{{ projects_count }}</h3>
+            <p>Projets</p>
+        </div>
+        <div class="kpi-card"><span>❤️</span>
+            <h3>{{ total_likes }}</h3>
+            <p>Likes</p>
+        </div>
+        <div class="kpi-card"><span>🎓</span>
+            <h3>{{ certifications_count }}</h3>
+            <p>Certifications</p>
+        </div>
+        <div class="kpi-card"><span>📩</span>
+            <h3>{{ subscribers_count }}</h3>
+            <p>Abonnés</p>
+        </div>
+    </section>
+
+    <!-- SERVICES STATS -->
+    <section class="dashboard-section reveal">
+        <h2 class="section-title my-3">🛠️ Services les plus demandés</h2>
+
+        <div class="services-stats">
+            {% for service in services_stats %}
+            <div class="service-stat-card">
+                <h3>{{ service.total }}</h3>
+                <p>{{ service.service_type|capfirst }}</p>
+            </div>
+            {% empty %}
+            <p class="text-center">Aucune demande enregistrée.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- GRAPH -->
+    <section class="dashboard-section reveal">
+        <h2 class="section-title">📈 Activité du site</h2>
+        <div class="chart-card glass">
+            <canvas id="visitsChart"></canvas>
+        </div>
+    </section>
+
+    <!-- SUGGESTION FORM -->
+    <!-- PROPOSER UNE SUGGESTION -->
+    <section class="dashboard-section reveal">
+        <h2 class="section-title">💡 Proposer une suggestion</h2>
+        <p class="section-subtitle">
+            Cette section est dédiée aux idées et améliorations
+            (différente des avis clients).
+        </p>
+
+        <div class="suggestion-form glass">
+            <form method="POST">
+                {% csrf_token %}
+
+                <input class="form-control suggestion-input" name="name_sug" placeholder="Votre nom" required>
+
+                <input class="form-control suggestion-input" name="email_sug" placeholder="Votre email (optionnel)">
+
+                <textarea class="form-control suggestion-input" name="message_sug" rows="4"
+                    placeholder="Votre suggestion ou idée" required></textarea>
+
+                <button class="btn btn-primary w-100 mt-3">
+                    Envoyer la suggestion
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- LISTE DES SUGGESTIONS -->
+    <section class="dashboard-section reveal" id="reviews">
+        <h2 class="section-title">🧠 Suggestions récentes</h2>
+
+        <div class="suggestions-grid">
+            {% for suggestion in suggestions %}
+            <div class="suggestion-item glass" data-id="{{ suggestion.id }}">
+                <p class="message">
+                    “{{ suggestion.message_sug|truncatechars:140 }}”
+                </p>
+
+                <div class="suggestion-meta">
+                    <span class="author">— {{ suggestion.name_sug }}</span>
+                    <span class="date">{{ suggestion.created_at|date:"d M Y" }}</span>
+                </div>
+
+                <button class="like-btn" data-id="{{ suggestion.id }}">
+                    Likes ❤️ <span class="like-count">{{ suggestion.likes }}</span>
+                </button>
+            </div>
+            {% empty %}
+            <p class="text-center">Aucune suggestion pour le moment.</p>
+            {% endfor %}
+        </div>
+
+        <!-- PAGINATION -->
+        {% if suggestions.has_other_pages %}
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+
+                {% if suggestions.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ suggestions.previous_page_number }}#reviews">
+                        ← Précédent
+                    </a>
+                </li>
+                {% endif %}
+
+                {% for num in suggestions.paginator.page_range %}
+                {% if suggestions.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > suggestions.number|add:'-3' and num < suggestions.number|add:'3' %} <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if suggestions.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ suggestions.next_page_number }}#reviews">
+                            Suivant →
+                        </a>
+                    </li>
+                    {% endif %}
+
+            </ul>
+        </nav>
+        {% endif %}
+    </section>
+
+    <!-- CTA -->
+    <section class="dashboard-cta reveal glass">
+        <h2>🚀 Vous avez un projet ?</h2>
+        <p>Construisons une solution performante et durable.</p>
+        <a href="{% url 'service' %}" class="btn btn-outline-primary">
+            Demander un service
+        </a>
+    </section>
+
+</div>
+
+<link rel="stylesheet" href="{% static 'includ/dash.css' %}">
+<script src="{% static 'js/chart.js' %}"></script>
+
+<script>
+    const ctx = document.getElementById('visitsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ visit_labels| safe }},
+        datasets: [{
+            data: {{ visit_data| safe }},
+        borderColor: '#2c82f3',
+        backgroundColor: 'rgba(44,130,243,.15)',
+        tension: 0.4,
+        fill: true
+        }]
+    },
+        options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+    }
+});
+</script>
+
+<script>
+    document.querySelectorAll(".like-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const suggestionId = this.dataset.id;
+            const likeCount = this.querySelector(".like-count");
+
+            fetch(`/suggestion/${suggestionId}/like/`, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        likeCount.textContent = data.likes;
+                        btn.classList.add("liked");
+                        btn.disabled = true;
+                    } else {
+                        alert("Vous avez déjà liké cette suggestion.");
+                    }
+                })
+                .catch(() => {
+                    alert("Erreur lors du like.");
+                });
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}A Propos | IOM-CGM{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'includ/prop.css' %}">
+
+<section class="about">
+
+    <h1 class="section-title my-4 reveal">
+        <i class="fa-solid fa-user"></i>
+        À propos de moi
+    </h1>
+    <hr class="reveal">
+
+    <!-- IDENTITÉ -->
+    <section class="about-section card glass">
+
+        <nav aria-label="breadcrumb" class="breadcrumb-wrapper reveal mt-0 mb-0">
+            <ol class="breadcrumb">
+                <!-- CV aligné à droite -->
+                <li class="breadcrumb-cv">
+                    <a href="{% static 'files/CV_OrthoMak.pdf' %}" download>
+                        <i class="fa-solid fa-download"></i> Mon CV
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    À propos
+                </li>
+            </ol>
+        </nav>
+
+        <div class="identity-header reveal">
+            <img src="{% static 'images/me2.jpg' %}" alt="ORTHO MAK" class="profile-pic">
+            <div>
+                <h2 class="reveal">ORTHO MAK</h2>
+                <p class="role reveal">Ingénieur Programmeur Web & Mobile</p>
+            </div>
+        </div>
+
+
+        <p class="intro reveal">
+            Je m'appelle <strong>ORTHO MAK</strong>, ingénieur programmeur web et mobile,
+            passionné par la conception de solutions numériques modernes,
+            sécurisées et performantes. Sérieux, discipliné et orienté résultats,
+            je mets mes compétences au service de projets innovants et utiles.
+        </p>
+
+        <div class="identity-grid reveal">
+            <div><strong><i class="fa-solid fa-id-card"></i> Nom complet :</strong> MAKAMBU BATUDIAYAU ORTHOTOMUTA</div>
+            <div><strong><i class="fa-solid fa-user-tag"></i> Surnom :</strong> ORTHO</div>
+            <div><strong><i class="fa-solid fa-user"></i> Fils de :</strong> LEON MAKAMBU</div>
+            <div><strong><i class="fa-solid fa-user"></i> Et de :</strong> ANGEL ILENDA</div>
+            <div><strong><i class="fa-solid fa-venus-mars"></i> Sexe :</strong> Masculin</div>
+            <div><strong><i class="fa-solid fa-flag"></i> Nationalité :</strong> Congo DRC</div>
+            <div><strong><i class="fa-solid fa-flag"></i> Origine :</strong> Kwango – Kenge – Pelende – Yete</div>
+            <div><strong><i class="fa-solid fa-location-dot"></i> Adresse :</strong> Kinshasa, Ngaliema</div>
+            <div><i class="fa-solid fa-briefcase"></i> <strong>Profession :</strong> Ingénieur Programmeur Web & Mobile
+            </div>
+        </div>
+    </section>
+
+    <!-- PARCOURS -->
+    <section class="about-section card glass">
+        <h2 class="reveal"><i class="fa-solid fa-graduation-cap reveal"></i> Parcours académique</h2>
+
+        <p class="reveal">
+            Mon parcours académique est marqué par une évolution progressive,
+            structurée et orientée vers les sciences informatiques et les
+            technologies numériques.
+        </p>
+
+        <ul class="timeline reveal">
+            <li class="reveal">
+                <span>2007 – 2013</span>
+                <strong>Institut EP Manzau</strong><br>
+                Certificat TENAFEP
+            </li>
+            <li class="reveal">
+                <span>2013 – 2019</span>
+                <strong>Institut de Kenge / CBCO</strong><br>
+                Diplôme d’État
+            </li>
+            <li class="reveal">
+                <span>2020 – 2024</span>
+                <strong>Université Pédagogique Nationale</strong><br>
+                Licence en Informatique (IAG)
+            </li>
+            <li class="reveal">
+                <span>2025 – 2027</span>
+                <strong>Université Pédagogique Nationale</strong><br>
+                Master en Informatique (IL)
+            </li>
+        </ul>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section class="about-section card glass">
+        <h2 class="reveal"><i class="fa-solid fa-code reveal"></i> Compétences</h2>
+
+        <p class="reveal">
+            Mes compétences techniques et transversales me permettent
+            d’intervenir efficacement dans la conception, le développement
+            et la maintenance des applications web et mobiles.
+        </p>
+
+        <div class="skills reveal">
+            <div class="reveal">
+                <h3 class="reveal">Techniques</h3>
+                <ul>
+                    <li><i class="fa-brands fa-html5"></i> HTML5 / CSS3</li>
+                    <li><i class="fa-brands fa-python"></i> Python / Django</li>
+                    <li><i class="fa-brands fa-js"></i> JavaScript</li>
+                    <li><i class="fa-solid fa-database"></i> SQLite, SQL Server, MySQL</li>
+                    <li><i class="fa-brands fa-github"></i> Git & GitHub</li>
+                </ul>
+            </div>
+
+            <div class="reveal">
+                <h3 class="reveal">Transversales</h3>
+                <ul>
+                    <li>Analyse & logique</li>
+                    <li>Travail en équipe</li>
+                    <li>Autonomie</li>
+                    <li>Gestion du temps</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPÉRIENCES -->
+    <section class="about-section card glass">
+        <h2 class="reveal"><i class="fa-solid fa-briefcase reveal"></i> Expériences</h2>
+
+        <p class="reveal">
+            En parallèle de ma formation académique, j’ai acquis des
+            expériences pratiques à travers des projets personnels,
+            universitaires et des prestations informelles.
+        </p>
+
+
+        <ul class="experience-list reveal">
+            <li class="reveal">
+                <strong class="reveal">Projets Django</strong><br>
+                Applications web avec authentification, gestion utilisateurs,
+                bases de données et tableaux de bord.
+            </li>
+            <li class="reveal">
+                <strong class="reveal">Projets académiques</strong><br>
+                Analyse des besoins, UML, développement de systèmes de gestion.
+            </li>
+            <li class="reveal">
+                <strong class="reveal">Freelance & pratique personnelle</strong><br>
+                Création de sites vitrines, maintenance, optimisation et support.
+            </li>
+        </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="about-section card glass contact mb-0" id="contact">
+        <h2 class="reveal"><i class="fa-solid fa-address-book reveal"></i> Contact</h2>
+
+        <div class="contact-grid card reveal">
+            <a href="tel:+243811966208" class="contact-item reveal">
+                <i class="fa-solid fa-phone reveal"></i>
+                <span class="reveal">+243 811 966 208 </span>
+            </a>
+
+            <a href="mailto:makambuortho2@gmail.com" class="contact-item reveal">
+                <i class="fa-solid fa-envelope reveal"></i>
+                <span class="reveal">makambuortho2@gmail.com</span>
+            </a>
+
+            <a href="https://wa.me/243811966208?text=Bonjour%20je%20souhaite%20vous%20contacter" target="_blank"
+                class="contact-item reveal">
+                <i class="fa-brands fa-whatsapp reveal"></i>
+                <span class="reveal">WhatsApp</span>
+            </a>
+
+            <a href="https://www.facebook.com/Ortho Mak" target="_blank" class="contact-item reveal">
+                <i class="fa-brands fa-facebook reveal"></i>
+                <span class="reveal">Facebook</span>
+            </a>
+
+            <div class="contact-item reveal">
+                <i class="fa-solid fa-location-dot reveal"></i>
+                <span class="reveal">Kinshasa, Ngaliema</span>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+<script defer src="{% static 'includ/prop.js' %}"></script>
+
+{% endblock %}

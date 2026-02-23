@@ -1,0 +1,486 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Service | IOM-CGM{% endblock %}
+{% block content %}
+
+<section class="container services-page" id="review">
+
+    <!-- TITRE -->
+    <h1 class="section-title reveal">
+        <i class="fa-solid fa-briefcase"></i>
+        Mes services
+    </h1>
+
+    <p class="section-subtitle reveal">
+        Des solutions numériques adaptées à vos besoins,
+        de la conception à la mise en production.
+    </p>
+
+    <hr>
+
+    <!-- SERVICES -->
+    <div class="services-grid">
+
+        <!-- SERVICE 1 -->
+        <div class="service-card glass-card">
+            <span class="service-badge popular">Populaire</span>
+            <div class="particles"></div>
+            <i class="fa-solid fa-code service-icon"></i>
+            <h3>Développement Web</h3>
+
+            <p>
+                Conception et développement d’applications web modernes,
+                sécurisées et performantes (sites vitrines, plateformes,
+                tableaux de bord, systèmes de gestion).
+            </p>
+
+            <ul class="service-list">
+                <li>Sites vitrines professionnels</li>
+                <li>Applications Django</li>
+                <li>Dashboards & systèmes internes</li>
+                <li>Maintenance & optimisation</li>
+            </ul>
+
+            <div class="service-actions">
+                <a href="{% url 'create_request' %}?type=web" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Commander
+                </a>
+
+
+                <a href="https://wa.me/243811966208?text=Bonjour%2C%20je%20souhaite%20un%20service%20d%27infographie"
+                    target="_blank" class="btn btn-outline-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <button class="btn btn-outline-primary service-detail-btn" data-bs-toggle="modal"
+                    data-bs-target="#serviceModal" data-title="Développement Web" data-icon="fa-code"
+                    data-desc="Conception de sites web modernes, sécurisés et évolutifs avec Django."
+                    data-tips="Préparer vos contenus|Définir votre objectif|Prévoir l’évolution future">
+                    <i class="fa-solid fa-circle-info"></i> Détails
+                </button>
+
+
+            </div>
+        </div>
+
+        <!-- SERVICE 2 -->
+        <div class="service-card glass-card">
+            <span class="service-badge popular">Populaire</span>
+            <div class="particles"></div>
+            <i class="fa-solid fa-mobile-screen service-icon"></i>
+            <h3>Développement Mobile</h3>
+
+            <p>
+                Développement d’applications mobiles intuitives
+                pour Android, orientées performance et expérience utilisateur.
+            </p>
+
+            <ul class="service-list">
+                <li>Applications mobiles Android</li>
+                <li>Interfaces modernes</li>
+                <li>Connexion API / Backend</li>
+                <li>Maintenance applicative</li>
+            </ul>
+
+            <div class="service-actions">
+                <a href="{% url 'create_request' %}?type=mobile" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Commander
+                </a>
+
+                <a href="https://wa.me/243811966208?text=Bonjour%2C%20je%20souhaite%20un%20service%20d%27infographie"
+                    target="_blank" class="btn btn-outline-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <button class="btn btn-outline-primary service-detail-btn" data-bs-toggle="modal"
+                    data-bs-target="#serviceModal" data-title="Développement Mobile" data-icon="fa-mobile-screen"
+                    data-desc="Création d’applications Android performantes et intuitives."
+                    data-tips="Définir les fonctionnalités clés|Penser UX|Prévoir maintenance">
+                    <i class="fa-solid fa-circle-info"></i> Détails
+                </button>
+
+            </div>
+        </div>
+
+        <!-- SERVICE 3 -->
+        <div class="service-card glass-card">
+            <span class="service-badge popular">Populaire</span>
+            <div class="particles"></div>
+            <i class="fa-solid fa-diagram-project service-icon"></i>
+            <h3>Analyse & Conception</h3>
+
+            <p>
+                Analyse des besoins, modélisation et conception
+                de solutions informatiques robustes et évolutives.
+            </p>
+
+            <ul class="service-list">
+                <li>Analyse fonctionnelle</li>
+                <li>Diagrammes UML</li>
+                <li>Conception de bases de données</li>
+                <li>Documentation technique</li>
+            </ul>
+
+            <div class="service-actions">
+                <a href="{% url 'create_request' %}?type=analyse" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Commander
+                </a>
+
+                <a href="https://wa.me/243811966208?text=Bonjour%2C%20je%20souhaite%20un%20service%20d%27infographie"
+                    target="_blank" class="btn btn-outline-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <button class="btn btn-outline-primary service-detail-btn" data-bs-toggle="modal"
+                    data-bs-target="#serviceModal" data-title="Analyse & Conception" data-icon="fa-diagram-project"
+                    data-desc="Concevoir et analyser de models professionnels pour un bon demarche de vos besoins."
+                    data-tips="Définir votre cible|Préparer besoin|Mettre les idées en claire">
+                    <i class="fa-solid fa-circle-info"></i> Détails
+                </button>
+
+            </div>
+        </div>
+
+        <!-- SERVICE 4 -->
+        <div class="service-card glass-card">
+            <span class="service-badge popular">Populaire</span>
+            <div class="particles"></div>
+            <i class="fa-solid fa-screwdriver-wrench service-icon"></i>
+            <h3>Maintenance & Support</h3>
+
+            <p>
+                Assistance technique, correction de bugs,
+                amélioration de performances et accompagnement continu.
+            </p>
+
+            <ul class="service-list">
+                <li>Correction d’erreurs</li>
+                <li>Mise à jour des systèmes</li>
+                <li>Support technique</li>
+                <li>Optimisation & sécurité</li>
+            </ul>
+
+            <div class="service-actions">
+                <a href="{% url 'create_request' %}?type=maintenance" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Commander
+                </a>
+
+                <a href="https://wa.me/243811966208?text=Bonjour%2C%20je%20souhaite%20un%20service%20d%27infographie"
+                    target="_blank" class="btn btn-outline-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <button class="btn btn-outline-primary service-detail-btn" data-bs-toggle="modal"
+                    data-bs-target="#serviceModal" data-title="Maintenance & Support" data-icon="fa-screwdriver-wrench"
+                    data-desc="Maintenir vos outils et comprendre comment se garantir."
+                    data-tips="Définir vos cas|Préparer outils|Choisir support">
+                    <i class="fa-solid fa-circle-info"></i> Détails
+                </button>
+
+            </div>
+        </div>
+
+        <!-- SERVICE 5 -->
+        <div class="service-card glass-card">
+            <span class="service-badge popular">Populaire</span>
+            <div class="particles"></div>
+            <i class="fa-solid fa-file-lines service-icon"></i>
+            <h3>Bureautique & Office</h3>
+
+            <p>
+                Création, mise en forme et optimisation de documents
+                professionnels pour entreprises, étudiants et particuliers.
+            </p>
+
+            <ul class="service-list">
+                <li>Word, Excel, PowerPoint</li>
+                <li>Rapports & mémoires</li>
+                <li>Tableaux automatisés</li>
+                <li>Présentations professionnelles</li>
+            </ul>
+
+            <div class="service-actions">
+                <a href="{% url 'create_request' %}?type=office" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Commander
+                </a>
+
+                <a href="https://wa.me/243811966208?text=Bonjour%2C%20je%20souhaite%20un%20service%20de%20bureautique"
+                    target="_blank" class="btn btn-outline-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <button class="btn btn-outline-primary service-detail-btn" data-bs-toggle="modal"
+                    data-bs-target="#serviceModal" data-title="Microsoft Office" data-icon="fa-file-lines"
+                    data-desc="Projectez-vous en Office, rapides et en vigueur ."
+                    data-tips="Préparer vos contenus|Définir votre objectif|Penser évolutivité">
+                    <i class="fa-solid fa-circle-info"></i> Détails
+                </button>
+
+
+            </div>
+        </div>
+
+        <!-- SERVICE 6 -->
+        <div class="service-card glass-card">
+            <span class="service-badge popular">Populaire</span>
+            <div class="particles"></div>
+            <i class="fa-solid fa-pen-nib service-icon"></i>
+            <h3>Infographie & Design</h3>
+
+            <p>
+                Conception de visuels modernes et percutants
+                pour améliorer votre image et votre communication.
+            </p>
+
+            <ul class="service-list">
+                <li>Flyers & affiches</li>
+                <li>Supports réseaux sociaux</li>
+                <li>Présentations visuelles</li>
+                <li>Identité visuelle simple</li>
+            </ul>
+
+            <div class="service-actions">
+                <a href="{% url 'create_request' %}?type=design" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Commander
+                </a>
+
+                <a href="https://wa.me/243811966208?text=Bonjour%2C%20je%20souhaite%20un%20service%20d%27infographie"
+                    target="_blank" class="btn btn-outline-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <button class="btn btn-outline-primary service-detail-btn" data-bs-toggle="modal"
+                    data-bs-target="#serviceModal" data-title="Infographie & Design" data-icon="fa-pen-nib"
+                    data-desc="Création de visuels professionnels pour renforcer votre image."
+                    data-tips="Définir votre cible|Choisir les couleurs|Prévoir formats">
+                    <i class="fa-solid fa-circle-info"></i> Détails
+                </button>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+<hr>
+
+<section class="container pricing-section reveal">
+    <h2 class="section-title">
+        <i class="fa-solid fa-tags"></i>
+        Tarifs indicatifs
+    </h2>
+
+    <p class="section-subtitle">
+        Les prix peuvent varier selon la complexité du projet. <span>Les prix à ne pas prendre en compte... Veuillez
+            passer votre demande en cas de besoin...</span>
+    </p>
+
+    <div class="pricing-grid">
+        <div class="price-card glass-card">
+            <h3>Web</h3>
+            <p class="price">À partir de <strong class="text-danger">150$</strong></p>
+            <span>Site vitrine / application simple</span>
+        </div>
+
+        <div class="price-card glass-card">
+            <h3>Mobile</h3>
+            <p class="price">À partir de <strong class="text-danger">200$</strong></p>
+            <span>Application Android</span>
+        </div>
+
+        <div class="price-card glass-card">
+            <h3>Infographie</h3>
+            <p class="price">À partir de <strong class="text-danger">20$</strong></p>
+            <span>Flyers, affiches, visuels</span>
+        </div>
+
+        <div class="price-card glass-card">
+            <h3>Office</h3>
+            <p class="price">À partir de <strong class="text-danger">15$</strong></p>
+            <span>Documents & présentations</span>
+        </div>
+    </div>
+</section>
+
+<hr class="mb-0">
+
+<section class="container cta-services glass-card reveal">
+    <h2>
+        <i class="fa-solid fa-bolt"></i>
+        Besoin d’un service rapide et fiable ?
+    </h2>
+
+    <p>
+        Réponse rapide • Travail professionnel • Accompagnement personnalisé
+    </p>
+
+    <a href="https://wa.me/243811966208" target="_blank" class="btn btn-success btn-lg">
+        <i class="fa-brands fa-whatsapp"></i>
+        Discuter maintenant sur WhatsApp
+    </a>
+</section>
+
+<hr class="mt-0 mb-0">
+
+<section id="reviews" class="container reviews-section glass-card mt-1 pt-4">
+
+    <!-- HEADER -->
+    <div class="reviews-header reveal">
+        <h2 class="section-title">
+            <i class="fa-solid fa-star"></i>
+            Avis Personnel
+        </h2>
+        <p class="section-subtitle">
+            Ils nous ont fait confiance. Découvrez leurs retours d’expérience.
+        </p>
+    </div>
+
+    <!-- GRID : AVIS + FORM -->
+    <div class="reviews-layout reveal">
+
+        <!-- AVIS CLIENTS -->
+        <div class="reviews-list">
+
+            {% if reviews %}
+            <div class="reviews-grid">
+                {% for review in reviews %}
+                <div class="review-card glass-card">
+                    <div class="review-head">
+                        <h4>{{ review.name|escape }}</h4>
+
+                        {% if review.rating >= 5 %}
+                        <span class="badge-trusted">
+                            <i class="fa-solid fa-circle-check"></i>
+                            User excellent
+                        </span>
+
+                        {% elif review.rating >= 4 %}
+                        <span class="badge-trusted">
+                            <i class="fa-solid fa-circle-check"></i>
+                            User satisfait
+                        </span>
+
+                        {% elif review.rating >= 3 %}
+                        <span class="badge-trusted">
+                            <i class="fa-solid fa-circle-check"></i>
+                            User moyen
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    <div class="stars" title="{{ review.rating }} / 5">
+                        {% for i in "12345" %}
+                        <i class="fa-solid fa-star {% if forloop.counter <= review.rating %}active{% endif %}"></i>
+                        {% endfor %}
+                    </div>
+
+                    <p class="review-comment">
+                        {{ review.comment|linebreaks }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            {% if reviews.paginator.num_pages > 1 %}
+            <div class="pagination">
+                {% if reviews.has_previous %}
+                <a href="?page={{ reviews.previous_page_number }}#reviews">←</a>
+                {% endif %}
+
+                <span>Page {{ reviews.number }} / {{ reviews.paginator.num_pages }}</span>
+
+                {% if reviews.has_next %}
+                <a href="?page={{ reviews.next_page_number }}#reviews">→</a>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% else %}
+            <p class="no-reviews">
+                Aucun avis pour le moment. Soyez le premier ⭐
+            </p>
+            {% endif %}
+
+        </div>
+
+        <!-- FORMULAIRE AVIS -->
+        <div class="review-form-wrapper">
+
+            <h3>
+                <i class="fa-solid fa-pen"></i>
+                Laisser un avis
+            </h3>
+
+            {% if success %}
+            <div class="success-msg">
+                <i class="fa-solid fa-circle-check"></i>
+                Merci pour votre avis 🙏
+                Il sera publié après validation.
+            </div>
+            {% endif %}
+
+            <form method="post" class="review-form glass-card">
+                {% csrf_token %}
+
+                <input type="text" name="name" placeholder="Votre nom" required>
+
+                <select name="rating" required>
+                    <option value="">Votre note</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ Très bien</option>
+                    <option value="3">⭐⭐⭐ Bien</option>
+                    <option value="2">⭐⭐ Moyen</option>
+                    <option value="1">⭐ Mauvais</option>
+                </select>
+
+                <textarea name="comment" id="inp-form" placeholder="Votre avis…" required></textarea>
+
+                <button type="submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Envoyer mon avis
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</section>
+
+
+<div class="modal fade" id="serviceModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i id="modalIcon" class="fa-solid"></i>
+                    <span id="modalTitle"></span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p id="modalDesc"></p>
+
+                <h6>💡 Conseils avant de commander</h6>
+                <ul id="modalTips"></ul>
+            </div>
+
+            <div class="modal-footer">
+                <a href="https://wa.me/243811966208" target="_blank" class="btn btn-success">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="{% static 'includ/serv.css' %}">
+{% block scripts %}
+<script src="{% static 'includ/serv.js' %}"></script>
+{% endblock %}
+
+{% endblock %}

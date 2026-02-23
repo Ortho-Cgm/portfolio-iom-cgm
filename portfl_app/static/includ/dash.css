@@ -1,0 +1,339 @@
+/* =========================
+   VARIABLES (LIGHT / DARK)
+========================= */
+:root {
+    --bg-main: #f5f7fb;
+    --bg-glass: rgba(255, 255, 255, 0.65);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --primary: #2c82f3;
+    --primary-soft: rgba(44, 130, 243, 0.15);
+    --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --radius-lg: 20px;
+    --radius-md: 16px;
+    --transition: all 0.35s ease;
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+    --bg-main: #0f172a;
+    --bg-glass: rgba(15, 23, 42, 0.7);
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-soft: rgba(56, 189, 248, 0.18);
+    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   GLOBAL
+========================= */
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+.glass {
+    background: var(--bg-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
+.dashboard-page {
+    max-width: 1200px;
+    padding: 70px 20px;
+}
+
+/* =========================
+   HERO
+========================= */
+.dashboard-hero {
+    text-align: center;
+    margin-bottom: 70px;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 10px auto 0;
+}
+
+hr {
+    width: 120px;
+    margin: 20px auto 50px;
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #2c82f3, transparent);
+}
+
+/* =========================
+   KPI
+========================= */
+.dashboard-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+    margin-bottom: 80px;
+}
+
+.kpi-card {
+    background: var(--bg-glass);
+    border-radius: var(--radius-md);
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, var(--primary-soft));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.kpi-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.kpi-card:hover::after {
+    opacity: 1;
+}
+
+.kpi-card span {
+    font-size: 2.4rem;
+}
+
+.kpi-card h3 {
+    font-size: 2.1rem;
+    margin: 8px 0;
+    font-weight: 800;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.dashboard-section {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+/* =========================
+   SERVICES STATS
+========================= */
+.services-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+}
+
+.service-stat-card {
+    background: linear-gradient(135deg, var(--primary), #00c6ff);
+    color: #fff;
+    padding: 30px 25px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 45px rgba(0, 198, 255, 0.35);
+    transition: var(--transition);
+}
+
+.service-stat-card:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+/* =========================
+   CHART
+========================= */
+.chart-card {
+    padding: 35px;
+}
+
+/* =========================
+   SUGGESTIONS
+========================= */
+/* =========================
+   SUGGESTION FORM
+========================= */
+
+.suggestion-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 35px;
+    background: var(--bg-card);
+    border-radius: 18px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* INPUTS */
+.suggestion-input {
+    margin-bottom: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--text-main);
+    border: 1px solid;
+    transition: background 0.3s ease,
+        color 0.3s ease,
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* DARK MODE INPUT BG */
+html[data-theme="dark"] .suggestion-input {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* PLACEHOLDER */
+.suggestion-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* FOCUS */
+.suggestion-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+    background: var(--bg-card);
+    color: #969696;
+}
+
+.suggestion-form {
+    animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* LIKE BUTTON */
+.like-btn {
+    margin-top: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.like-btn:hover {
+    transform: scale(1.1);
+    color: var(--accent);
+}
+
+/* LIKED STATE */
+.like-btn.liked {
+    color: var(--accent);
+}
+
+/* DARK MODE */
+html[data-theme="dark"] .like-btn {
+    color: var(--text-muted);
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+.suggestion-item {
+    padding: 28px;
+    text-align: left;
+    transition: var(--transition);
+}
+
+.suggestion-item:hover {
+    transform: translateY(-8px);
+}
+
+.suggestion-item .message {
+    font-style: italic;
+    margin-bottom: 14px;
+    color: var(--text-main);
+}
+
+.suggestion-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.suggestion-item .author {
+    font-weight: 700;
+}
+
+.suggestion-item .date {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* =========================
+   CTA
+========================= */
+.dashboard-cta {
+    text-align: center;
+    padding: 60px 35px;
+}
+
+.pagination .page-link {
+    background: var(--bg-glass);
+    border: none;
+    margin: 0 4px;
+    color: var(--text-main);
+    border-radius: 12px;
+    padding: 8px 14px;
+    transition: var(--transition);
+}
+
+.pagination .page-link:hover {
+    background: var(--primary-soft);
+}
+
+.pagination .active .page-link {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(44, 130, 243, .4);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

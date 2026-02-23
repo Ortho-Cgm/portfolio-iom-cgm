@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<body style="font-family:Arial; background:#f5f6fa; padding:20px">
+    <div style="max-width:600px; margin:auto; background:#fff; padding:25px; border-radius:10px">
+        <h2 style="color:#2c82f3">Votre devis est prêt</h2>
+        <img src="https://tonsite.com/email/open/{{ quote_id }}/" width="1" height="1" style="display:none">
+
+        <p>Bonjour <strong>{{ name }}</strong>,</p>
+
+        <p>Voici votre devis pour le service <b>{{ service }}</b> :</p>
+
+        <table width="100%" cellpadding="8" cellspacing="0"
+            style="margin-top:15px;border-collapse:collapse;background:#f9fafc;border-radius:8px">
+            <tr>
+                <td style="font-weight:bold;color:#555">Client</td>
+                <td>{{ name }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;color:#555">Email</td>
+                <td>{{ email }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;color:#555">Service</td>
+                <td>{{ service }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;color:#555">N° Devis</td>
+                <td>#DEV-{{ quote_id }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;color:#555">Date</td>
+                <td>{{ created_at }}</td>
+            </tr>
+        </table>
+
+        <hr style="margin:25px 0">
+
+        <h3 style="color:#2c82f3">💼 Détails du devis</h3>
+
+        <table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse;border:1px solid #eee">
+            <tr style="background:#f2f4f8">
+                <th align="left">Description</th>
+                <th align="right">Montant</th>
+            </tr>
+            <tr>
+                <td>Prestation {{ service }}</td>
+                <td align="right">{{ amount }} $</td>
+            </tr>
+            <tr style="background:#fafafa;font-weight:bold">
+                <td>Total</td>
+                <td align="right">{{ amount }} $</td>
+            </tr>
+        </table>
+
+        <p style="margin-top:20px;font-size:14px">
+            📌 <b>Conditions :</b><br>
+            • Ce devis est valable <b>7 jours</b><br>
+            • Délai estimé : <b>3 à 7 jours ouvrables</b><br>
+            • Paiement avant démarrage du projet
+        </p>
+
+        <div style="margin-top:25px;text-align:center">
+            <a href="https://wa.me/243811966208"
+                style="display:inline-block;padding:12px 22px;background:#25D366;color:white;border-radius:30px;text-decoration:none;margin-right:10px">
+                ✅ Valider sur WhatsApp
+            </a>
+
+            <a href="mailto:orthocgm@gmail.com?subject=Devis {{ quote_id }}"
+                style="display:inline-block;padding:12px 22px;background:#2c82f3;color:white;border-radius:30px;text-decoration:none">
+                📧 Répondre par email
+            </a>
+        </div>
+
+        <p style="margin-top:35px;font-size:12px;color:#999;text-align:center">
+            IOM-CGM<br>
+            📧 orthocgm@gmail.com | 📞 +243 811 966 208<br>
+            © {{ year }} – Tous droits réservés
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,255 @@
+.request-page {
+    max-width: 760px;
+    margin: auto;
+    padding: 90px 15px;
+}
+
+/* GLASS CARD GLOBAL */
+.request-page .glass-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ================= HEADER ================= */
+
+.request-header {
+    text-align: center;
+    padding: 40px 35px;
+    margin-bottom: 35px;
+}
+
+.request-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.request-title i {
+    color: #2c82f3;
+    margin-right: 8px;
+}
+
+.request-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    max-width: 520px;
+    margin: 0 auto 22px;
+}
+
+/* SHORTCUTS */
+.request-shortcuts {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.request-shortcuts .shortcut {
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.12);
+    transition: 0.3s ease;
+}
+
+.request-shortcuts .shortcut:hover {
+    background: #2c82f3;
+    color: #fff;
+}
+
+/* ================= FORM ================= */
+
+.request-form {
+    padding: 40px 38px;
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-group label i {
+    color: #2c82f3;
+    margin-right: 6px;
+}
+
+/* INPUT STYLE LOGIN */
+.form-control {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.178);
+    color: inherit;
+    font-size: 17px;
+}
+
+#inp-form {
+    color: #7c7c7c;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #2c82f3;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#serv-selct {
+    color: black;
+}
+
+/* SUBMIT */
+.submit-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    border-radius: 999px;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2c82f3;
+    box-shadow: 0 10px 30px rgba(44, 130, 243, 0.5);
+}
+
+/* ================= CONSEILS ================= */
+
+.request-tips {
+    padding: 30px 10px;
+    margin-bottom: 0;
+}
+
+.request-tips h4 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.request-tips h4 i {
+    color: #2c82f3;
+    margin-right: 6px;
+}
+
+.request-tips ul {
+    list-style: none;
+    padding: 0;
+    max-width: 420px;
+    margin: auto;
+}
+
+.request-tips li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    opacity: 0.85;
+}
+
+.request-tips li i {
+    color: #2c82f3;
+}
+
+/* ================================
+   ANIMATIONS D’APPARITION
+================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Délai progressif */
+.request-header.reveal {
+    transition-delay: 0.1s;
+}
+
+.request-form.reveal {
+    transition-delay: 0.25s;
+}
+
+.request-tips.reveal {
+    transition-delay: 0.4s;
+}
+
+/* ================================
+   HOVER CARDS
+================================ */
+
+.request-page .glass-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.request-page .glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 55px rgba(44, 130, 243, 0.25);
+}
+
+
+/* ===== MODAL SUCCESS ===== */
+
+.success-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(116, 115, 115, 0.973);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.success-modal {
+    max-width: 420px;
+    width: 90%;
+    padding: 35px 30px;
+    text-align: center;
+    animation: fadeUp 0.5s ease both;
+}
+
+.success-modal h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.success-modal h2 i {
+    color: #2ecc71;
+    margin-right: 6px;
+}
+
+.success-modal p {
+    opacity: 0.9;
+    margin-bottom: 22px;
+    color: #fff;
+}
+
+.success-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.close-modal {
+    border-radius: 999px;
+}
