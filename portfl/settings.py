@@ -30,7 +30,7 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-dev-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
     "portfolio-iom-cgm.onrender.com",
