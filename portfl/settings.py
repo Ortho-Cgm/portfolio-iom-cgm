@@ -34,9 +34,9 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-dev-key")
 DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
-    "portfolio-iom-cgm.onrender.com",
     "localhost",
     "127.0.0.1",
+    ".onrender.com",
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -99,7 +99,7 @@ TEMPLATES = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://portfolio-iom-cgm.onrender.com",
+    "https://*.onrender.com",
 ]
 
 
