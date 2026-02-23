@@ -13,6 +13,7 @@ env/
 # Django
 staticfiles/
 media/
+static/videos/
 local_settings.py
 
 # OS
