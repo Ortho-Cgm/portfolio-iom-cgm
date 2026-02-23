@@ -1,0 +1,1 @@
+web: gunicorn portfl.wsgi:application
