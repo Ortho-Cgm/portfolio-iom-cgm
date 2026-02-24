@@ -28,7 +28,3 @@ urlpatterns = [
 
     path("suggestion/<int:suggestion_id>/like/", views.like_suggestion, name="like_suggestion"),
 ]
-
-
-if settings.DEBUG :
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
