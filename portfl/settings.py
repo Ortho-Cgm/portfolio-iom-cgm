@@ -57,6 +57,7 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = "orthocgm@gmail.com"""
 
 # EMAIL CONFIG — SENDGRID (SANS DOMAINE)
+EMAIL_TIMEOUT = 10  # secondes (OBLIGATOIRE)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 EMAIL_HOST = "smtp.sendgrid.net"

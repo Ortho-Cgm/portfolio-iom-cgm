@@ -10,8 +10,24 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.db.models import Count, Sum
 from django.db.models.functions import TruncDay
+import threading
 
 # Create your views here.
+
+
+# portfl_app/utils.py (ou en haut du fichier views.py)
+
+def send_newsletter_email(email):
+    try:
+        send_mail(
+            "Bienvenue 🎉",
+            "Merci de vous être abonné à la newsletter.",
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            fail_silently=True,
+        )
+    except Exception as e:
+        print("Newsletter email error:", e)
 
 def accueil(request):
     return render(request, 'onglet/accueil.html')
@@ -131,19 +147,20 @@ def project_like(request, pk):
 def subscribe_newsletter(request):
     if request.method == "POST":
         email = request.POST.get("email")
+
         if not email:
             return redirect(request.META.get("HTTP_REFERER", "/"))
 
         subscriber, created = Subscriber.objects.get_or_create(email=email)
 
         if created:
-            send_mail(
-                "Bienvenue 🎉",
-                "Merci de vous être abonné à la newsletter.",
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=True
-            )
+            # ENVOI EMAIL ASYNCHRONE (NON BLOQUANT)
+            threading.Thread(
+                target=send_newsletter_email,
+                args=(email,),
+                daemon=True
+            ).start()
+
             messages.success(request, "✅ Merci pour votre abonnement.")
         else:
             messages.warning(request, "⚠️ Cet email est déjà abonné.")
