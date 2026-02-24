@@ -73,7 +73,6 @@ class VisitorLog(models.Model):
     
 
 class Project(models.Model):
-
     STATUS_CHOICES = (
         ('realise', 'Réalisé'),
         ('encours', 'En cours'),
@@ -82,8 +81,14 @@ class Project(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    #image = models.ImageField(upload_to='projects/', blank=True, null=True)
-    image = CloudinaryField('image', folder='projects', blank=True, null=True)
+
+    image = CloudinaryField(
+        "image",
+        folder="projects",
+        blank=True,
+        null=True
+    )
+
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
     technologies = models.CharField(
         max_length=255,
@@ -98,6 +103,7 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
     
 class ProjectLike(models.Model):
     project = models.ForeignKey(
@@ -126,7 +132,6 @@ class Subscriber(models.Model):
     
 
 class Certification(models.Model):
-
     STATUS_CHOICES = (
         ('obtenue', 'Obtenue'),
         ('encours', 'En cours'),
@@ -135,23 +140,23 @@ class Certification(models.Model):
 
     title = models.CharField(max_length=255)
     provider = models.CharField(max_length=255)
-    #logo = models.ImageField(upload_to='certifications/logos/', blank=True, null=True)
-    logo = CloudinaryField('logo', folder='certifications/logos', blank=True, null=True)
+
+    logo = CloudinaryField(
+        "logo",
+        folder="certifications/logos",
+        blank=True,
+        null=True
+    )
 
     description = models.TextField()
     technologies = models.CharField(max_length=255, blank=True)
 
     issued_date = models.DateField()
     expiration_date = models.DateField(blank=True, null=True)
-
-    credential_id = models.CharField(max_length=255, blank=True)
-    credential_url = models.URLField(blank=True)
-
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
     level = models.CharField(max_length=50, blank=True)
 
     is_featured = models.BooleanField(default=False)
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
