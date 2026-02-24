@@ -5,6 +5,9 @@ from . import views
 
 urlpatterns = [
     path('', views.accueil, name="accueil"),
+
+    path("health/", views.health, name="health"),
+    
     path('onglet/apropos/', views.propos, name="propos"),
 
     # services

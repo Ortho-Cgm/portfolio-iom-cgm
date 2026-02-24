@@ -29,6 +29,9 @@ def send_newsletter_email(email):
     except Exception as e:
         print("Newsletter email error:", e)
 
+def health(request):
+    return JsonResponse({"status": "ok"})
+
 def accueil(request):
     return render(request, 'onglet/accueil.html')
 
