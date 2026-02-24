@@ -156,9 +156,18 @@ class VisitorLogAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'likes', 'created_at')
-    list_filter = ('status',)
-    search_fields = ('title', 'description', 'technologies')
+    list_display = ("title", "status", "likes", "image_preview", "created_at")
+    readonly_fields = ("image_preview",)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="height:120px; border-radius:8px;" />',
+                obj.image.url
+            )
+        return "Aucune image"
+
+    image_preview.short_description = "Aperçu image"
 
 @admin.register(ProjectLike)
 class ProjectLikeAdmin(admin.ModelAdmin):
@@ -174,9 +183,18 @@ class SubscriberAdmin(admin.ModelAdmin):
 
 @admin.register(Certification)
 class CertificationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'provider', 'status', 'issued_date')
-    list_filter = ('status', 'provider')
-    search_fields = ('title', 'provider', 'technologies')
+    list_display = ("title", "provider", "status", "image_preview")
+    readonly_fields = ("image_preview",)
+
+    def image_preview(self, obj):
+        if obj.logo:
+            return format_html(
+                '<img src="{}" style="height:120px; border-radius:8px;" />',
+                obj.logo.url
+            )
+        return "Aucun logo"
+
+    image_preview.short_description = "Aperçu logo"
 
 @admin.register(FAQ)
 class FAQAdmin(admin.ModelAdmin):

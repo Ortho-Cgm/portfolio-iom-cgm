@@ -38,7 +38,7 @@
                 <span class="service-badge popular">réalisé</span>
 
                 {% if project.image %}
-                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                <img src="{{ project.image.url|default:'' }}" alt="{{ project.title }}" class="project-image">
                 {% endif %}
 
                 <h3>{{ project.title }}</h3>
@@ -90,7 +90,7 @@
                 <span class="service-badge recommended">en cours</span>
 
                 {% if project.image %}
-                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                <img src="{{ project.image.url|default:'' }}" alt="{{ project.title }}" class="project-image">
                 {% endif %}
 
                 <h3>{{ project.title }}</h3>
@@ -142,7 +142,7 @@
                 <span class="service-badge recommended">à venir</span>
 
                 {% if project.image %}
-                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                <img src="{{ project.image.url|default:'' }}" alt="{{ project.title }}" class="project-image">
                 {% endif %}
 
                 <h3>{{ project.title }}</h3>
