@@ -98,7 +98,7 @@
             setTimeout(() => {
                 const text = document.querySelector(".splash-text");
                 if (text) text.innerText = "Chargement…";
-            }, 8000);
+            }, 1400);
 
             const pingBackend = () => {
                 fetch("/health/", { cache: "no-store" })
@@ -106,7 +106,7 @@
                     .catch(retry);
             };
 
-            const retry = () => setTimeout(pingBackend, 3000);
+            const retry = () => setTimeout(pingBackend, 1400);
 
             pingBackend();
         })();
