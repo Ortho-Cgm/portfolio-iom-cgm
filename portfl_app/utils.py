@@ -45,7 +45,7 @@ def send_quote_email(service_request, quote, manual=False):
         email = EmailMultiAlternatives(
             subject,
             text_content,
-            settings.DEFAULT_FROM_EMAIL,
+            settings.EMAIL_HOST_USER,
             [recipient],
             reply_to=[settings.EMAIL_HOST_USER],
         )

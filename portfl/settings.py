@@ -43,6 +43,9 @@ ALLOWED_HOSTS = [
     ".onrender.com",
 ]
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_TIMEOUT = 20
+
 #EMAIL_HOST_USER = "orthocgm@gmail.com"
 #EMAIL_HOST_PASSWORD = "brugaghkudvepzog"
 
@@ -51,7 +54,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = "Portfolio <orthocgm@gmail.com>"
+DEFAULT_FROM_EMAIL = "orthocgm@gmail.com"
 
 
 # Application definition
