@@ -54,27 +54,23 @@ class QuoteAdmin(admin.ModelAdmin):
         )
 
     resend_button.short_description = "Action"
-
+    
     def resend_email(self, request, quote_id):
         quote = Quote.objects.get(pk=quote_id)
 
-        try:
-            send_quote_email(quote.request, quote, manual=True)
-            quote.email_sent = True
-            quote.save(update_fields=["email_sent"])
+        send_quote_email(quote.request, quote, manual=True)
 
-            messages.success(
-                request,
-                f"📧 Email envoyé à {quote.request.email}"
-            )
+        quote.email_sent = True
+        quote.save(update_fields=["email_sent"])
 
-        except Exception as e:
-            messages.error(
-                request,
-                f"❌ Erreur lors de l’envoi : {str(e)}"
-            )
+        messages.success(
+            request,
+            f"📧 Email envoyé à {quote.request.email}"
+        )
 
-        return redirect("admin:portfl_app_quote_change", quote_id)
+        return redirect(
+            reverse("admin:portfl_app_quote_change", args=[quote_id])
+        )
 
 
 @admin.register(EmailLog)
