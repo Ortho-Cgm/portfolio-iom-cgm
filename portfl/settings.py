@@ -43,7 +43,7 @@ ALLOWED_HOSTS = [
     ".onrender.com",
 ]
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+"""EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_TIMEOUT = 20
 
 #EMAIL_HOST_USER = "orthocgm@gmail.com"
@@ -54,7 +54,19 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = "orthocgm@gmail.com"
+DEFAULT_FROM_EMAIL = "orthocgm@gmail.com"""
+
+# EMAIL CONFIG — SENDGRID (SANS DOMAINE)
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
+
+DEFAULT_FROM_EMAIL = "Portfolio <no-reply@sendgrid.net>"
 
 
 # Application definition
