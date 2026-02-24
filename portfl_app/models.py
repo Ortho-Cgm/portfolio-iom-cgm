@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -81,7 +82,8 @@ class Project(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    #image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    image = CloudinaryField('image', folder='projects', blank=True, null=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
     technologies = models.CharField(
         max_length=255,
@@ -133,7 +135,8 @@ class Certification(models.Model):
 
     title = models.CharField(max_length=255)
     provider = models.CharField(max_length=255)
-    logo = models.ImageField(upload_to='certifications/logos/', blank=True, null=True)
+    #logo = models.ImageField(upload_to='certifications/logos/', blank=True, null=True)
+    logo = CloudinaryField('logo', folder='certifications/logos', blank=True, null=True)
 
     description = models.TextField()
     technologies = models.CharField(max_length=255, blank=True)
