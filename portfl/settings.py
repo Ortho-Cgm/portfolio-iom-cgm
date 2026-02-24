@@ -22,6 +22,8 @@ if os.path.exists(BASE_DIR / ".env"):
     load_dotenv(BASE_DIR / ".env")
 TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 
+cloudinary.config(secure=True)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -54,13 +56,6 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = "Portfolio <orthocgm@gmail.com>"
-
-cloudinary.config(
-    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.getenv("CLOUDINARY_API_KEY"),
-    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
-    secure=True
-)
 
 
 # Application definition
@@ -197,7 +192,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA FILES (Cloudinary)
 # =========================
 
-#DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 #MEDIA_URL = "/media/"
 #MEDIA_ROOT = BASE_DIR / "media"
