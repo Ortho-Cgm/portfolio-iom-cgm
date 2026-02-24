@@ -106,7 +106,7 @@
                     .catch(retry);
             };
 
-            const retry = () => setTimeout(pingBackend, 1400);
+            const retry = () => setTimeout(pingBackend, 6000);
 
             pingBackend();
         })();
