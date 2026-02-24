@@ -45,15 +45,17 @@ def send_quote_email(service_request, quote, manual=False):
         )
         email.attach_alternative(html_content, "text/html")
 
-        # IMPORTANT
-        email.send(fail_silently=True)
-
         EmailLog.objects.create(
             quote=quote,
             recipient=recipient,
             subject=subject,
             is_manual=manual,
         )
+
+        sent = email.send(fail_silently=False)
+        if sent == 0:
+            raise Exception("Email non envoyé")
+        return True
 
     except Exception:
         logger.exception("❌ Erreur envoi devis (SMTP)")
