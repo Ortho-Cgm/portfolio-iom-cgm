@@ -65,7 +65,7 @@
     </div>
 
 
-
+    <!--
     <script>
         window.addEventListener("load", function () {
             const splash = document.getElementById("splash-screen");
@@ -76,6 +76,41 @@
                 sessionStorage.setItem("splashShown", "true");
             }, 5000);
         });
+    </script>-->
+
+
+    <script>
+        (function () {
+            const splash = document.getElementById("splash-screen");
+            if (!splash) return;
+
+            const MIN_TIME = 900;
+            const start = Date.now();
+
+            const hideSplash = () => {
+                const elapsed = Date.now() - start;
+                const delay = Math.max(0, MIN_TIME - elapsed);
+                setTimeout(() => {
+                    splash.classList.add("hidden");
+                    sessionStorage.setItem("splashShown", "true");
+                }, delay);
+            };
+
+            setTimeout(() => {
+                const text = document.querySelector(".splash-text");
+                if (text) text.innerText = "Première visite de la journée…";
+            }, 8000);
+
+            const pingBackend = () => {
+                fetch("/health/", { cache: "no-store" })
+                    .then(res => res.ok ? hideSplash() : retry())
+                    .catch(retry);
+            };
+
+            const retry = () => setTimeout(pingBackend, 3000);
+
+            pingBackend();
+        })();
     </script>
 
 
