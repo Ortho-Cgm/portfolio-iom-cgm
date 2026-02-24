@@ -26,13 +26,28 @@ def send_quote_email(service_request, quote, manual=False):
             "year": date.today().year
         }
 
+        text_content = f"""
+        Bonjour {service_request.name},
+
+        Votre devis est prêt.
+
+        Service : {service_request.get_service_type_display()}
+        Montant : {quote.amount} $
+
+        Merci de nous contacter pour validation.
+
+        Portfolio CGM
+        Email : orthocgm@gmail.com
+        """
+
         html_content = render_to_string("emails/quote_email.html", context)
 
         email = EmailMultiAlternatives(
             subject,
-            "Votre devis est prêt",
+            text_content,
             settings.DEFAULT_FROM_EMAIL,
             [recipient],
+            reply_to=[settings.EMAIL_HOST_USER],
         )
         email.attach_alternative(html_content, "text/html")
         email.send()
