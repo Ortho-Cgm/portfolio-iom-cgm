@@ -66,7 +66,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "apikey"
 EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
 
-DEFAULT_FROM_EMAIL = "Portfolio <orthocgm@gmail.com>"
+DEFAULT_FROM_EMAIL = "orthocgm@gmail.com"
 
 
 # Application definition
