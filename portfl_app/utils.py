@@ -46,7 +46,7 @@ def send_quote_email(service_request, quote, manual=False):
         email.attach_alternative(html_content, "text/html")
 
         # IMPORTANT
-        email.send(fail_silently=False)
+        email.send(fail_silently=True)
 
         EmailLog.objects.create(
             quote=quote,
