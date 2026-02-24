@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.decorators.http import require_POST
 from . models import *
@@ -129,24 +130,25 @@ def project_like(request, pk):
 
 def subscribe_newsletter(request):
     if request.method == "POST":
-        email = request.POST.get('email')
-        if email:
-            subscriber, created = Subscriber.objects.get_or_create(email=email)
-            if created:
-                send_mail(
-                    'Bienvenue 🎉',
-                    'Merci de vous être abonné à la newsletter.',
-                    'orthocgm@gmail.com',
-                    [email],
-                    fail_silently=True
-                )
-        
-        if Subscriber.objects.filter(email=email).exists():
-            messages.warning(request, "⚠️ Cet email est déjà abonné.")
+        email = request.POST.get("email")
+        if not email:
+            return redirect(request.META.get("HTTP_REFERER", "/"))
+
+        subscriber, created = Subscriber.objects.get_or_create(email=email)
+
+        if created:
+            send_mail(
+                "Bienvenue 🎉",
+                "Merci de vous être abonné à la newsletter.",
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=True
+            )
+            messages.success(request, "✅ Merci pour votre abonnement.")
         else:
-            Subscriber.objects.create(email=email)
-            messages.success(request, "✅ Merci ! Vous êtes bien abonné à la newsletter.")
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+            messages.warning(request, "⚠️ Cet email est déjà abonné.")
+
+    return redirect(request.META.get("HTTP_REFERER", "/"))
 
 
 def certification(request):
